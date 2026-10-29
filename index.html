@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cooperativa Alianza del Sur</title>
+<meta name="description" content="Cooperativa de Trabajo Alianza del Sur Ltda. Construcción, refacción, demolición, mantenimiento, poda y movimiento de suelos en Rosario, Santa Fe.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: cartel de obra (sign board) hero, then stacked full-width bands in concrete grey / black, orange as the single safety accent. Single light theme by choice. */
+:root{
+  --ink:#141414;
+  --paper:#eeece8;
+  --concrete:#dcd9d3;
+  --orange:#e8641b;
+  --orange-deep:#c24f0e;
+  --muted:#5b5853;
+  --white:#fbfaf8;
+  --display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --body:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:.95;margin:0;text-transform:uppercase;letter-spacing:.01em}
+h2{font-size:clamp(44px,6vw,76px);font-weight:900}
+h3{font-size:26px;font-weight:800}
+p{margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,40px)}
+.tag{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--orange-deep)}
+
+/* hazard stripe */
+.stripe{height:14px;background:repeating-linear-gradient(-45deg,var(--orange) 0 18px,var(--ink) 18px 36px)}
+
+/* header */
+header.top{background:var(--ink);color:var(--white);position:sticky;top:0;z-index:20}
+header.top .wrap{display:flex;align-items:center;gap:20px;min-height:68px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{width:44px;height:44px;border-radius:50%;background:#fff}
+.brand span{font-family:var(--display);font-weight:800;font-size:24px;text-transform:uppercase;letter-spacing:.02em;line-height:1}
+nav.menu{display:flex;gap:22px;margin-left:auto;flex-wrap:wrap}
+nav.menu a{text-decoration:none;font-weight:600;font-size:15px;color:#cfccc6}
+nav.menu a:hover{color:var(--white)}
+.call{background:var(--orange);color:var(--ink);text-decoration:none;font-weight:700;padding:9px 16px;font-size:15px}
+.call:hover{background:var(--white)}
+@media (max-width:860px){nav.menu{display:none}.call{margin-left:auto}}
+
+/* hero */
+.hero{padding:clamp(40px,7vw,88px) 0 clamp(48px,7vw,90px)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,5vw,64px);align-items:center}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(56px,8.6vw,118px);font-weight:900;line-height:.86}
+.hero h1 em{font-style:normal;color:var(--orange)}
+.hero .lead{margin-top:26px;font-size:20px;max-width:34ch;color:#2b2a28}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 22px;font-weight:700;text-decoration:none;border:2px solid var(--ink)}
+.btn.solid{background:var(--ink);color:var(--white)}
+.btn.solid:hover{background:var(--orange);border-color:var(--orange);color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--white)}
+
+/* cartel de obra */
+.cartel{background:var(--white);border:3px solid var(--ink);box-shadow:10px 10px 0 var(--ink);position:relative}
+.cartel-head{background:var(--orange);padding:14px 20px;border-bottom:3px solid var(--ink);display:flex;justify-content:space-between;align-items:center;gap:12px}
+.cartel-head b{font-family:var(--display);font-size:30px;font-weight:900;text-transform:uppercase;line-height:1}
+.cartel-head small{font-family:var(--mono);font-size:12px;font-weight:600}
+.cartel dl{margin:0;display:grid;grid-template-columns:auto 1fr}
+.cartel dt,.cartel dd{margin:0;padding:11px 18px;border-bottom:1px solid #cfcbc4}
+.cartel dt{font-family:var(--mono);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);border-right:1px solid #cfcbc4;padding-top:14px}
+.cartel dd{font-weight:600;font-variant-numeric:tabular-nums}
+.cartel dl > :nth-last-child(-n+2){border-bottom:0}
+.cartel .legs{position:absolute;left:18%;right:18%;bottom:-46px;height:46px;display:flex;justify-content:space-between;z-index:-1}
+.cartel .legs i{width:12px;background:#8b877f}
+@media (max-width:900px){.cartel .legs{display:none}}
+
+/* intro band */
+.band-dark{background:var(--ink);color:var(--white)}
+.about{padding:clamp(56px,8vw,100px) 0}
+.about .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(28px,5vw,64px);margin-top:36px}
+@media (max-width:800px){.about .grid{grid-template-columns:1fr}}
+.about h3{color:var(--orange);margin-bottom:12px}
+.about p{color:#d8d5cf;max-width:60ch}
+.about .tag{color:var(--orange)}
+
+/* stats strip */
+.facts{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #3a3936;margin-top:56px}
+.facts div{padding:22px 18px 0 0}
+.facts b{display:block;font-family:var(--display);font-weight:900;font-size:56px;line-height:1;color:var(--white)}
+.facts span{font-size:14px;color:#a7a39c}
+@media (max-width:700px){.facts{grid-template-columns:repeat(2,1fr)}}
+
+/* services */
+section.block{padding:clamp(56px,8vw,100px) 0}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.sec-head p{max-width:46ch;color:var(--muted)}
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:3px solid var(--ink);border-left:3px solid var(--ink)}
+@media (max-width:950px){.services{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){.services{grid-template-columns:1fr}}
+.svc{border-right:3px solid var(--ink);border-bottom:3px solid var(--ink);padding:26px 24px 28px;background:var(--white);display:flex;flex-direction:column;gap:14px}
+.svc .num{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--orange-deep)}
+.svc ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.svc li{padding-left:18px;position:relative;font-size:16px;line-height:1.45}
+.svc li::before{content:"";position:absolute;left:0;top:.55em;width:8px;height:8px;background:var(--orange)}
+
+/* gallery */
+.works{background:var(--concrete)}
+.gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+.gallery figure{margin:0;position:relative;background:var(--ink);overflow:hidden;cursor:zoom-in;grid-column:span 4}
+.gallery figure.w6{grid-column:span 6}
+.gallery figure.tall{grid-row:span 2}
+.gallery img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3;transition:transform .5s ease}
+.gallery figure.tall img{aspect-ratio:auto}
+.gallery figure:hover img{transform:scale(1.04)}
+.gallery figcaption{position:absolute;left:0;bottom:0;right:0;padding:28px 14px 12px;background:linear-gradient(transparent,rgba(0,0,0,.82));color:#fff;font-weight:600;font-size:15px;line-height:1.3}
+@media (max-width:800px){.gallery figure,.gallery figure.w6{grid-column:span 6}.gallery figure.tall{grid-row:auto}.gallery figure.tall img{aspect-ratio:4/3}}
+@media (max-width:520px){.gallery figure,.gallery figure.w6{grid-column:span 12}}
+
+/* before after */
+.ba-title{margin:72px 0 24px}
+.ba{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media (max-width:900px){.ba{grid-template-columns:1fr}}
+.pair{background:var(--white);border:3px solid var(--ink)}
+.pair .imgs{display:grid;grid-template-columns:1fr 1fr;gap:3px;background:var(--ink)}
+.pair .imgs div{position:relative;cursor:zoom-in}
+.pair img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.pair .imgs.land img{aspect-ratio:4/3}
+.pair .lbl{position:absolute;top:8px;left:8px;font-family:var(--mono);font-size:11px;font-weight:600;padding:3px 7px;background:var(--white);color:var(--ink);text-transform:uppercase}
+.pair .lbl.after{background:var(--orange)}
+.pair p{padding:14px 16px;font-weight:600;line-height:1.35}
+
+/* obras list */
+.obras{margin-top:72px;display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(24px,5vw,64px)}
+@media (max-width:860px){.obras{grid-template-columns:1fr}}
+.obras ol{list-style:none;margin:0;padding:0;border-top:3px solid var(--ink)}
+.obras li{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid #b9b5ad}
+.obras li b{font-family:var(--mono);font-size:13px;font-weight:600;text-transform:uppercase;color:var(--orange-deep);padding-top:3px}
+@media (max-width:520px){.obras li{grid-template-columns:1fr;gap:2px}}
+
+/* equipment */
+.equip{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:3px solid var(--ink);background:var(--white)}
+.equip > div{padding:22px 20px;border-right:1px solid #cfcbc4}
+.equip > div:last-child{border-right:0}
+.equip h3{font-size:22px;margin-bottom:12px}
+.equip ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:15px;line-height:1.4}
+.equip li{border-left:3px solid var(--orange);padding-left:10px}
+@media (max-width:1000px){.equip{grid-template-columns:repeat(2,1fr)}.equip > div{border-bottom:1px solid #cfcbc4}}
+@media (max-width:560px){.equip{grid-template-columns:1fr}.equip > div{border-right:0}}
+.highlight{margin-top:22px;display:flex;gap:18px;align-items:baseline;flex-wrap:wrap;padding:20px 24px;background:var(--ink);color:var(--white)}
+.highlight b{font-family:var(--display);font-weight:900;font-size:58px;line-height:1;color:var(--orange)}
+
+/* values */
+.values{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:start}
+@media (max-width:860px){.values{grid-template-columns:1fr}}
+.words{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.words span{font-family:var(--display);font-weight:800;font-size:28px;text-transform:uppercase;padding:4px 14px;border:2px solid var(--white);line-height:1.1}
+.words span:nth-child(3n+1){background:var(--orange);border-color:var(--orange);color:var(--ink)}
+.principles{list-style:none;margin:0;padding:0;counter-reset:p}
+.principles li{counter-increment:p;display:grid;grid-template-columns:52px 1fr;align-items:center;padding:16px 0;border-bottom:1px solid #3a3936;font-size:19px;font-weight:500}
+.principles li::before{content:counter(p,decimal-leading-zero);font-family:var(--mono);color:var(--orange);font-size:14px;font-weight:600}
+
+/* contact */
+.contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,5vw,56px)}
+@media (max-width:900px){.contact-grid{grid-template-columns:1fr}}
+.people{display:grid;gap:14px}
+.person{display:grid;grid-template-columns:1fr auto;gap:6px 18px;align-items:center;background:var(--white);border:3px solid var(--ink);padding:18px 20px}
+.person .role{font-family:var(--mono);font-size:12px;font-weight:600;text-transform:uppercase;color:var(--orange-deep);grid-column:1/-1}
+.person .name{font-family:var(--display);font-size:30px;font-weight:800;text-transform:uppercase;line-height:1}
+.person .tel{font-variant-numeric:tabular-nums;font-weight:600}
+.person .acts{display:flex;gap:8px;flex-wrap:wrap;grid-column:1/-1;margin-top:6px}
+.person .acts a{font-size:14px;font-weight:700;text-decoration:none;padding:6px 12px;border:2px solid var(--ink)}
+.person .acts a.wa{background:var(--orange);border-color:var(--orange)}
+.person .acts a:hover{background:var(--ink);color:var(--white);border-color:var(--ink)}
+.office{background:var(--ink);color:var(--white);padding:28px}
+.office h3{color:var(--orange);margin-bottom:18px}
+.office dl{margin:0;display:grid;gap:16px}
+.office dt{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:#a7a39c}
+.office dd{margin:2px 0 0;font-size:18px;font-weight:600;word-break:break-word}
+.copy{margin-top:8px;font:600 13px var(--body);background:transparent;color:var(--white);border:1px solid #6b6862;padding:5px 10px;cursor:pointer}
+.copy:hover{border-color:var(--orange);color:var(--orange)}
+
+footer{background:#0b0b0b;color:#a7a39c;padding:34px 0;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer b{color:var(--white)}
+
+/* lightbox */
+dialog{border:0;padding:0;background:transparent;max-width:min(94vw,1200px)}
+dialog::backdrop{background:rgba(10,10,10,.88)}
+dialog img{max-height:84vh;width:auto;margin:0 auto}
+dialog p{color:#fff;font-weight:600;margin-top:10px;text-align:center}
+dialog button{position:fixed;top:14px;right:16px;background:var(--orange);border:0;font:700 15px var(--body);padding:10px 14px;cursor:pointer}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio"><img src="img/logo.jpg" alt="Logo Alianza del Sur"><span>Alianza del Sur</span></a>
+    <nav class="menu" aria-label="Secciones">
+      <a href="#nosotros">Nosotros</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#trabajos">Trabajos</a>
+      <a href="#equipos">Equipos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="call" href="#contacto">Pedí presupuesto</a>
+  </div>
+</header>
+<div class="stripe" aria-hidden="true"></div>
+
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <div>
+      <p class="tag">Cooperativa de trabajo · Rosario, Santa Fe</p>
+      <h1>Construimos <em>entre todos</em></h1>
+      <p class="lead">Obras, refacciones, demoliciones, mantenimiento, poda y movimiento de suelos para casas, empresas e instituciones públicas y privadas.</p>
+      <div class="ctas">
+        <a class="btn solid" href="#contacto">Contactanos</a>
+        <a class="btn ghost" href="#trabajos">Ver trabajos realizados</a>
+      </div>
+    </div>
+
+    <aside class="cartel" aria-label="Datos de la cooperativa">
+      <div class="cartel-head"><b>Ejecuta</b><small>Cartel de obra</small></div>
+      <dl>
+        <dt>Empresa</dt><dd>Cooperativa de Trabajo “Alianza del Sur” Ltda.</dd>
+        <dt>Mat. INAES</dt><dd>56.450</dd>
+        <dt>Mat. Prov.</dt><dd>3.753 · Santa Fe</dd>
+        <dt>CUIT</dt><dd>33-71595573-9</dd>
+        <dt>Domicilio</dt><dd>Corrientes 5436 · Rosario (2000)</dd>
+        <dt>Teléfono</dt><dd>0341 15 380-8824</dd>
+      </dl>
+      <div class="legs" aria-hidden="true"><i></i><i></i></div>
+    </aside>
+  </div>
+</section>
+
+<section class="band-dark about" id="nosotros">
+  <div class="wrap">
+    <p class="tag">Quiénes somos</p>
+    <h2>Trabajo asociado, crecimiento compartido</h2>
+    <div class="grid">
+      <div>
+        <h3>Una cooperativa de trabajo</h3>
+        <p>Somos una Cooperativa de Trabajo Asociado: nuestros miembros se dedican a tiempo completo a brindar servicios a terceros, con calidad profesional y compromiso social. En nuestro modelo, los objetivos económicos y laborales van de la mano con los sociales, y así generamos un crecimiento basado en el empleo, la equidad y la igualdad.</p>
+      </div>
+      <div>
+        <h3>Por qué elegirnos</h3>
+        <p>Unimos conocimientos y fuerza de trabajo para ser más eficientes y cumplir cada obra en el menor tiempo posible. Recibimos a personas con o sin experiencia y, obra tras obra, transmitimos lo aprendido entre todos. Así reducimos costos de construcción y mano de obra, y abrimos espacios de participación entre la comunidad y organismos estatales y privados.</p>
+      </div>
+    </div>
+    <div class="facts">
+      <div><b>8</b><span>años de trabajo</span></div>
+      <div><b>17</b><span>servicios distintos</span></div>
+      <div><b>100 m</b><span>de altura con andamio eléctrico</span></div>
+      <div><b>9</b><span>barrios de Rosario con obras</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="servicios">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><p class="tag">Servicios</p><h2>Lo que hacemos</h2></div>
+      <p>Trabajamos para particulares, empresas y entidades públicas. Si tu trabajo no está en la lista, consultanos.</p>
+    </div>
+    <div class="services">
+      <div class="svc"><span class="num">01</span><h3>Construcción y refacción</h3>
+        <ul><li>Mantenimiento y refacción de edificios</li><li>Refacción de propiedades, interior y exterior</li><li>Viviendas y ampliaciones completas</li><li>Refacción y construcción de veredas</li></ul></div>
+      <div class="svc"><span class="num">02</span><h3>Demolición</h3>
+        <ul><li>Demolición y reubicación de propiedades</li><li>Demolición de estructuras de hormigón</li><li>Limpieza de terreno posterior a la obra</li></ul></div>
+      <div class="svc"><span class="num">03</span><h3>Pintura y trabajos en altura</h3>
+        <ul><li>Hidrolavado y pintura de edificios con andamio eléctrico</li><li>Limpieza y pintura de edificios con silleta</li><li>Reparación y pintura de escuelas e instituciones</li></ul></div>
+      <div class="svc"><span class="num">04</span><h3>Espacios verdes</h3>
+        <ul><li>Desmonte y poda de árboles de cualquier porte</li><li>Plantación de árboles</li><li>Construcción y mantenimiento de plazas</li><li>Mantenimiento de terrenos y espacios verdes</li></ul></div>
+      <div class="svc"><span class="num">05</span><h3>Movimiento de suelos</h3>
+        <ul><li>Creación, mantenimiento y rectificación de zanjas</li><li>Traslado de tierra con retroexcavadora y camiones volcadores</li><li>Nivelación y compactación de suelo</li><li>Traslado de materiales de construcción</li></ul></div>
+      <div class="svc"><span class="num">06</span><h3>Instalaciones, limpieza y mudanzas</h3>
+        <ul><li>Tendido y reparación de redes eléctricas</li><li>Colocación y conexión de tanques, cisternas y bombas de agua</li><li>Servicios de limpieza, incluidas limpiezas complejas</li><li>Mudanzas y retiro de residuos</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="block works" id="trabajos">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><p class="tag">Trabajos realizados</p><h2>Nuestras obras</h2></div>
+      <p>Fotos de trabajos hechos por la cooperativa. Tocá una imagen para verla más grande.</p>
+    </div>
+
+    <div class="gallery">
+      <figure class="w6"><img src="img/f13.jpg" alt="Vivienda terminada" loading="lazy"><figcaption>Construcción de viviendas y ampliaciones completas</figcaption></figure>
+      <figure class="w6"><img src="img/f14.jpg" alt="Oficina estatal refaccionada" loading="lazy"><figcaption>Mantenimiento, refacción y limpieza de entidades estatales</figcaption></figure>
+      <figure><img src="img/f11.jpg" alt="Retroexcavadora en zanja" loading="lazy"><figcaption>Mantenimiento de zanjas con retroexcavadora</figcaption></figure>
+      <figure><img src="img/f12.jpg" alt="Terreno nivelado" loading="lazy"><figcaption>Nivelación y compactación de suelo</figcaption></figure>
+      <figure><img src="img/f7.jpg" alt="Equipo cargando camión" loading="lazy"><figcaption>Mudanzas y recolección de residuos</figcaption></figure>
+      <figure><img src="img/f8.jpg" alt="Trabajo en la vía pública" loading="lazy"><figcaption>Mantenimiento de espacios públicos</figcaption></figure>
+      <figure><img src="img/f6.jpg" alt="Zanja rectificada" loading="lazy"><figcaption>Mantenimiento y rectificación de zanjas</figcaption></figure>
+      <figure><img src="img/f5.jpg" alt="Vereda en obra" loading="lazy"><figcaption>Refacción y realización de veredas</figcaption></figure>
+      <figure><img src="img/f16.jpg" alt="Árbol retirado" loading="lazy"><figcaption>Poda, escamonda y retiro de árboles</figcaption></figure>
+      <figure><img src="img/f15.jpg" alt="Patio tras retiro de árboles" loading="lazy"><figcaption>Retiro de árboles y limpieza</figcaption></figure>
+      <figure><img src="img/f19.jpg" alt="Terreno desmalezado junto a un muro" loading="lazy"><figcaption>Desmalezado de instituciones públicas y privadas</figcaption></figure>
+      <figure class="w6"><img src="img/f3.jpg" alt="Escalera de hormigón en demolición" loading="lazy" style="aspect-ratio:16/10"><figcaption>Demolición de escalera de hormigón en silo arenero</figcaption></figure>
+      <figure class="w6"><img src="img/f4.jpg" alt="Trabajadores en demolición" loading="lazy" style="aspect-ratio:16/10"><figcaption>Demolición en silo arenero, barrio El Mambruyo</figcaption></figure>
+    </div>
+
+    <h3 class="ba-title" style="font-size:40px">Antes y después</h3>
+    <div class="ba">
+      <div class="pair">
+        <div class="imgs"><div><span class="lbl">Antes</span><img src="img/f22.jpg" alt="Tablero eléctrico antes" loading="lazy"></div><div><span class="lbl after">Después</span><img src="img/f23.jpg" alt="Tablero eléctrico después" loading="lazy"></div></div>
+        <p>Reparación de redes eléctricas domiciliarias e institucionales</p>
+      </div>
+      <div class="pair">
+        <div class="imgs"><div><span class="lbl">Antes</span><img src="img/f17.jpg" alt="Árbol antes de la poda" loading="lazy"></div><div><span class="lbl after">Después</span><img src="img/f18.jpg" alt="Árbol después de la poda" loading="lazy"></div></div>
+        <p>Poda y escamonda de árboles</p>
+      </div>
+      <div class="pair">
+        <div class="imgs land"><div><span class="lbl">Antes</span><img src="img/f26.jpg" alt="Pared de escuela antes" loading="lazy"></div><div><span class="lbl after">Después</span><img src="img/f27.jpg" alt="Pared de escuela pintada" loading="lazy"></div></div>
+        <p>Reparación y pintura en instituciones escolares</p>
+      </div>
+      <div class="pair">
+        <div class="imgs land"><div><span class="lbl">Antes</span><img src="img/f9.jpg" alt="Vivienda en demolición" loading="lazy"></div><div><span class="lbl after">Después</span><img src="img/f10.jpg" alt="Vivienda refaccionada" loading="lazy"></div></div>
+        <p>Demolición y refacción de vivienda</p>
+      </div>
+      <div class="pair">
+        <div class="imgs"><div><span class="lbl">Antes</span><img src="img/f20.jpg" alt="Desagüe con hojas" loading="lazy"></div><div><span class="lbl after">Después</span><img src="img/f21.jpg" alt="Techo y canaleta limpios" loading="lazy"></div></div>
+        <p>Mantenimiento de instituciones públicas y privadas</p>
+      </div>
+      <div class="pair">
+        <div class="imgs"><div><span class="lbl">Antes</span><img src="img/f24.jpg" alt="Pasillo antes de la limpieza" loading="lazy"></div><div><span class="lbl after">Después</span><img src="img/f25.jpg" alt="Pasillo después de la limpieza" loading="lazy"></div></div>
+        <p>Limpiezas complejas</p>
+      </div>
+    </div>
+
+    <div class="obras">
+      <div><p class="tag">Por barrio</p><h3 style="font-size:40px;margin-top:6px">Obras en Rosario</h3></div>
+      <ol>
+        <li><b>Grandoli</b><span>Refacción integral de inmueble después de un incendio, hoy oficina de la SPVyH.</span></li>
+        <li><b>Godoy</b><span>Demolición y refacción de vivienda familiar. Mantenimiento de plazas.</span></li>
+        <li><b>Ludueña</b><span>Demolición de viviendas y limpieza de terreno. Recolección manual de residuos.</span></li>
+        <li><b>El Mambruyo</b><span>Demolición parcial de silo arenero.</span></li>
+        <li><b>Nueva Esperanza</b><span>Sistema de desagüe: cámara séptica, cámara de separación de sólidos y pozo negro.</span></li>
+        <li><b>María Reina</b><span>Limpieza y nivelación de terreno para pavimentación de calle.</span></li>
+        <li><b>Rondeau</b><span>Limpieza de desagües principales con retroexcavadora.</span></li>
+        <li><b>Las Flores</b><span>Creación y rectificación de zanjas.</span></li>
+        <li><b>Tablada</b><span>Pintura, cambio de luminarias, refacción de muros y reparación de veredas.</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="equipos">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><p class="tag">Equipamiento propio</p><h2>Con qué trabajamos</h2></div>
+      <p>Contamos con herramientas manuales, inalámbricas y eléctricas, y maquinaria vial propia.</p>
+    </div>
+    <div class="equip">
+      <div><h3>Mantenimiento</h3><ul><li>Herramientas para electricidad, albañilería, plomería, revestimientos, Durlock y pintura</li><li>Agujereadoras, taladros y soldadoras</li><li>Generadores a explosión</li><li>Andamios para pasillos y exterior</li><li>Pluma de elevación de hasta 500 kg</li></ul></div>
+      <div><h3>Demolición</h3><ul><li>Martillo eléctrico demoledor</li><li>Masas de boleo</li><li>Masas, picos y herramientas manuales</li></ul></div>
+      <div><h3>Pintura</h3><ul><li>Andamio eléctrico trifásico</li><li>Silletas para trabajo exterior</li><li>Compresores portátiles</li></ul></div>
+      <div><h3>Parques</h3><ul><li>Motosierras</li><li>Cortacercos</li><li>Desmalezadoras a explosión</li></ul></div>
+      <div><h3>Maquinaria vial</h3><ul><li>Retroexcavadora John Deere</li><li>Minipala cargadora</li><li>Camiones con batea volcadora</li></ul></div>
+    </div>
+    <div class="highlight"><b>100 m</b><span>de altura con nuestro andamio eléctrico para pintura, limpieza y mantenimiento de edificios, sin fijación a la estructura.</span></div>
+  </div>
+</section>
+
+<section class="block band-dark" id="valores">
+  <div class="wrap values">
+    <div>
+      <p class="tag" style="color:var(--orange)">Principios cooperativos</p>
+      <h2>Nuestros valores</h2>
+      <div class="words">
+        <span>Solidaridad</span><span>Igualdad</span><span>Respeto</span><span>Democracia</span><span>Compromiso</span><span>Creatividad</span><span>Honestidad</span><span>Humildad</span><span>Tenacidad</span>
+      </div>
+    </div>
+    <ol class="principles">
+      <li>Capacitación continua</li>
+      <li>Autonomía e independencia</li>
+      <li>Adhesión voluntaria y abierta</li>
+      <li>Cooperación entre cooperativas</li>
+      <li>Participación económica de los asociados</li>
+      <li>Compromiso con la comunidad que nos rodea</li>
+    </ol>
+  </div>
+</section>
+
+<section class="block" id="contacto">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><p class="tag">Contacto</p><h2>Pedí tu presupuesto</h2></div>
+      <p>Escribinos o llamanos y coordinamos una visita a la obra.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="people">
+        <div class="person"><span class="role">Presidente</span><span class="name">Damián Andrés Juárez</span><span class="tel">0341 15 380-8824</span>
+          <div class="acts"><a class="wa" href="https://wa.me/5493413808824">WhatsApp</a><a href="tel:+5493413808824">Llamar</a></div></div>
+      </div>
+      <div class="office">
+        <h3>Cooperativa de Trabajo “Alianza del Sur” Ltda.</h3>
+        <dl>
+          <div><dt>Correo</dt><dd id="mail">cooperativaalianzadelsur@hotmail.com</dd><button class="copy" id="copyMail" type="button">Copiar correo</button></div>
+          <div><dt>Domicilio legal</dt><dd>Corrientes 5436, Rosario (2000), Santa Fe, Argentina</dd></div>
+          <div><dt>CUIT</dt><dd>33-71595573-9</dd></div>
+          <div><dt>Matrículas</dt><dd>INAES 56.450 · Dirección General de Cooperativas de Santa Fe 3.753</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stripe" aria-hidden="true"></div>
+<footer>
+  <div class="wrap">
+    <span><b>Cooperativa de Trabajo “Alianza del Sur” Ltda.</b> · Rosario, Santa Fe</span>
+    <span>CUIT 33-71595573-9 · Mat. INAES 56.450</span>
+  </div>
+</footer>
+
+<dialog id="lb" aria-label="Foto ampliada">
+  <button type="button" id="lbClose">Cerrar ✕</button>
+  <img id="lbImg" alt="">
+  <p id="lbCap"></p>
+</dialog>
+
+<script>
+(function(){
+  var lb=document.getElementById('lb'),img=document.getElementById('lbImg'),cap=document.getElementById('lbCap');
+  function open(src,alt,text){img.src=src;img.alt=alt||'';cap.textContent=text||'';try{lb.showModal()}catch(e){}}
+  document.querySelectorAll('.gallery figure').forEach(function(f){
+    f.tabIndex=0;
+    var i=f.querySelector('img'),c=f.querySelector('figcaption');
+    function go(){open(i.src,i.alt,c?c.textContent:'')}
+    f.addEventListener('click',go);
+    f.addEventListener('keydown',function(e){if(e.key==='Enter')go()});
+  });
+  document.querySelectorAll('.pair .imgs div').forEach(function(d){
+    var i=d.querySelector('img'),l=d.querySelector('.lbl'),p=d.closest('.pair').querySelector('p');
+    d.addEventListener('click',function(){open(i.src,i.alt,(l?l.textContent+': ':'')+p.textContent)});
+  });
+  document.getElementById('lbClose').addEventListener('click',function(){lb.close()});
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.close()});
+  var b=document.getElementById('copyMail');
+  b.addEventListener('click',function(){
+    var t=document.getElementById('mail').textContent;
+    try{navigator.clipboard.writeText(t).then(function(){b.textContent='Copiado'},function(){b.textContent='Seleccioná y copiá el correo'})}catch(e){b.textContent='Seleccioná y copiá el correo'}
+  });
+})();
+</script>
+</body>
+</html>
